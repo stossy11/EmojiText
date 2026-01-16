@@ -138,10 +138,11 @@ import OSLog
         markdown content: String,
         interpretedSyntax: AttributedString.MarkdownParsingOptions.InterpretedSyntax = .inlineOnlyPreservingWhitespace,
         emojis: [any CustomEmoji],
-        shouldOmitSpacesBetweenEmojis: Bool = true
+        shouldOmitSpacesBetweenEmojis: Bool = true,
+        shouldCheckForColon: Bool = true
     ) {
         self.renderer = MarkdownEmojiRenderer(string: content, shouldOmitSpacesBetweenEmojis: shouldOmitSpacesBetweenEmojis, interpretedSyntax: interpretedSyntax)
-        self.emojis = emojis.filter { content.contains(":\($0.shortcode):") }
+        self.emojis = emojis.filter { content.contains(shouldCheckForColon ? ":\($0.shortcode):" : "\($0.shortcode)") }
     }
     
     /// Initialize a ``EmojiText`` with support for custom emojis.
@@ -159,10 +160,11 @@ import OSLog
     public init(
         verbatim content: String,
         emojis: [any CustomEmoji],
-        shouldOmitSpacesBetweenEmojis: Bool = true
+        shouldOmitSpacesBetweenEmojis: Bool = true,
+        shouldCheckForColon: Bool = true
     ) {
         self.renderer = VerbatimEmojiRenderer(string: content, shouldOmitSpacesBetweenEmojis: shouldOmitSpacesBetweenEmojis)
-        self.emojis = emojis.filter { content.contains(":\($0.shortcode):") }
+        self.emojis = emojis.filter { content.contains(shouldCheckForColon ? ":\($0.shortcode):" : "\($0.shortcode)") }
     }
     
     /// Initialize a ``EmojiText`` with support for custom emojis.
