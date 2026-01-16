@@ -66,7 +66,7 @@ struct VerbatimEmojiRenderer: EmojiRenderer {
         var text = string
         
         for shortcode in emojis.keys {
-            text = text.replacingOccurrences(of: ":\(shortcode):", with: "\(String.emojiSeparator)\(shortcode)\(String.emojiSeparator)")
+            text = text.replacingOccurrences(of: "\(shortcode)", with: "\(String.emojiSeparator)\(shortcode)\(String.emojiSeparator)")
         }
         
         return text

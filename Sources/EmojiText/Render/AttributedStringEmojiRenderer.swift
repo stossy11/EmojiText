@@ -78,7 +78,7 @@ struct AttributedStringEmojiRenderer: EmojiRenderer {
     private func renderAttributedString(with emojis: [String: LoadedEmoji]) -> AttributedString {
         var string = attributedString
         for (shortcode, emoji) in emojis {
-            for range in attributedString.ranges(of: ":\(shortcode):") {
+            for range in attributedString.ranges(of: "\(shortcode)") {
                 string[range].emoji = emoji
             }
         }

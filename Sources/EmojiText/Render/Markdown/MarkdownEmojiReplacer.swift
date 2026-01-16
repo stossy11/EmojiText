@@ -16,7 +16,7 @@ struct MarkdownEmojiReplacer: MarkupRewriter {
         for shortcode in emojis.keys {
             // Replace emojis with a Markdown image with a custom URL Scheme
             string = string.replacingOccurrences(
-                of: ":\(shortcode):",
+                of: "\(shortcode)",
                 // Inject `String.emojiSeparator` in order to be able to remove spaces between emojis
                 with: "\(String.emojiSeparator)![\(shortcode)](\(String.emojiScheme)://\(shortcode))\(String.emojiSeparator)"
             )
