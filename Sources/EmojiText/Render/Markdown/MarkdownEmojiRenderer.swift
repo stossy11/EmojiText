@@ -43,8 +43,6 @@ struct MarkdownEmojiRenderer: EmojiRenderer {
         let emojiDocument = emojiReplacer.visitDocument(originalDocument) ?? originalDocument
 
         return emojiDocument.format(options: formatterOptions)
-            .splitOnEmoji(omittingSpacesBetweenEmojis: shouldOmitSpacesBetweenEmojis)
-            .joined()
     }
 
     // MARK: - SwiftUI

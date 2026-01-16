@@ -13,7 +13,7 @@ extension String {
     }
     
     static var emojiSeparator: String {
-        ""
+        "<custom_emoji_break/>"
     }
     
     /// Split the text on the injected emoji separator
